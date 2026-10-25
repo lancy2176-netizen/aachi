@@ -4,5 +4,6 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/Aachi/',
+  // GitHub Pages project URLs are case-sensitive: this site is served at /aachi/.
+  base: '/aachi/',
 })
