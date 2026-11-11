@@ -86,7 +86,38 @@ function TextPage({ path }: { path: string }) {
         </CardContent>
       </Card>
     </Container>
-  ); return <Box sx={{ bgcolor: '#f4f8ff', py: { xs: 6, md: 8 } }}><Container maxWidth="lg"><Typography component="h1" sx={{ fontSize: { xs: 38, md: 50 }, fontWeight: 800, letterSpacing: '-1.8px' }}>{info?.title ?? 'About Aachi'}</Typography><Typography sx={{ color: '#88818a', mt: 1 }}>{brand} ·</Typography><Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '230px 1fr' }, gap: 6, mt: 6, alignItems: 'start' }}><Card elevation={0} sx={{ p: 2.5, position: { md: 'sticky' }, top: 110, border: '1px solid #e5edf8' }}><Typography sx={{ fontWeight: 750, mb: 1 }}>On this page</Typography>{(info?.sections ?? ['Our story', 'Our promise', 'Get started']).map((s, i) => <Typography component="button" type="button" onClick={() => document.getElementById(`section-${i}`)?.scrollIntoView({ behavior: 'smooth' })} key={s} sx={{ display: 'block', width: '100%', py: .8, px: 0, border: 0, bgcolor: 'transparent', textAlign: 'left', cursor: 'pointer', color: '#716b73', fontSize: 14, '&:hover': { color: red } }}>{s}</Typography>)}</Card><Card elevation={0} sx={{ p: { xs: 3, md: 5 }, border: '1px solid #e5edf8' }}><Typography sx={{ fontSize: 17, lineHeight: 1.9, color: '#615c63', mb: 3 }}>{(info?.intro ?? `${brand} brings people together through warm, meaningful conversations. We believe everyone deserves to feel heard.`).replaceAll('Aachi', brand)}</Typography>{(info?.sections ?? ['Our story', 'Our promise', 'Get started']).map((s, i) => <Box id={`section-${i}`} key={s} sx={{ pt: 2, pb: 2.5, scrollMarginTop: 100 }}><Typography component="h2" sx={{ fontSize: 21, fontWeight: 750, mb: 1 }}>{s}</Typography><Typography sx={{ fontSize: 15, lineHeight: 1.85, color: '#6f6971' }}>{pagePath === '/delete_account' && i === 0 ? 'Send an email to support@Aachiapp.com with the subject “Delete Account”. Our team will assist with your request.' : pagePath === '/contact' ? 'Reach our support team at support@Aachiapp.com.' : `${s} is an important part of making ${brand} a trusted and welcoming place. We handle every conversation with care and encourage users to contact support@Aachiapp.com with any questions or concerns.`}</Typography></Box>)}</Card></Box></Container></Box>
+  ); return <Box sx={{ bgcolor: '#f4f8ff', py: { xs: 6, md: 8 } }}><Container maxWidth="lg"><Typography component="h1" sx={{ fontSize: { xs: 38, md: 50 }, fontWeight: 800, letterSpacing: '-1.8px' }}>{info?.title ?? 'About Aachi'}</Typography><Typography sx={{ color: '#88818a', mt: 1 }}>{brand} ·</Typography><Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '230px 1fr' }, gap: 6, mt: 6, alignItems: 'start' }}><Card elevation={0} sx={{ p: 2.5, position: { md: 'sticky' }, top: 110, border: '1px solid #e5edf8' }}><Typography sx={{ fontWeight: 750, mb: 1 }}>On this page</Typography>{(info?.sections ?? ['Our story', 'Our promise', 'Get started']).map((s, i) => <Typography component="button" type="button" onClick={() => document.getElementById(`section-${i}`)?.scrollIntoView({ behavior: 'smooth' })} key={s} sx={{ display: 'block', width: '100%', py: .8, px: 0, border: 0, bgcolor: 'transparent', textAlign: 'left', cursor: 'pointer', color: '#716b73', fontSize: 14, '&:hover': { color: red } }}>{s}</Typography>)}</Card><Card elevation={0} sx={{ p: { xs: 3, md: 5 }, border: '1px solid #e5edf8' }}><Typography sx={{ fontSize: 17, lineHeight: 1.9, color: '#615c63', mb: 3 }}>{(info?.intro ?? `${brand} brings people together through warm, meaningful conversations. We believe everyone deserves to feel heard.`).replaceAll('Aachi', brand)}</Typography>{brand === 'Aachi' && pagePath === '/privacy_policy' && (
+  <Box
+    sx={{
+      mb: 3,
+      p: 3,
+      border: '1px solid #e5edf8',
+      borderRadius: 3,
+      bgcolor: '#fff',
+    }}
+  >
+    <Typography sx={{ fontWeight: 750, mb: 1.5 }}>
+      App and Developer Information
+    </Typography>
+    <Typography sx={{ fontSize: 15, lineHeight: 1.9, color: '#615c63' }}>
+      This Privacy Policy applies specifically to the Aachi mobile application
+      published on Google Play by Nimmys Online. Nimmys Online is the developer
+      name associated with the Google Play developer account owned by Sojan MS.
+    </Typography>
+    <Typography sx={{ fontSize: 15, lineHeight: 1.9, color: '#615c63', mt: 1 }}>
+      Developer Name: Nimmys Online
+    </Typography>
+    <Typography sx={{ fontSize: 15, lineHeight: 1.9, color: '#615c63' }}>
+      Account Owner: Sojan MS
+    </Typography>
+    <Typography sx={{ fontSize: 15, lineHeight: 1.9, color: '#615c63' }}>
+      Developer Contact: nimmyscolorlab@gmail.com
+    </Typography>
+    <Typography sx={{ fontSize: 15, lineHeight: 1.9, color: '#615c63' }}>
+      Privacy Support: support@Aachiapp.com
+    </Typography>
+  </Box>
+)}{(info?.sections ?? ['Our story', 'Our promise', 'Get started']).map((s, i) => <Box id={`section-${i}`} key={s} sx={{ pt: 2, pb: 2.5, scrollMarginTop: 100 }}><Typography component="h2" sx={{ fontSize: 21, fontWeight: 750, mb: 1 }}>{s}</Typography><Typography sx={{ fontSize: 15, lineHeight: 1.85, color: '#6f6971' }}>{pagePath === '/delete_account' && i === 0 ? 'Send an email to support@Aachiapp.com with the subject “Delete Account”. Our team will assist with your request.' : pagePath === '/contact' ? 'Reach our support team at support@Aachiapp.com.' : `${s} is an important part of making ${brand} a trusted and welcoming place. We handle every conversation with care and encourage users to contact support@Aachiapp.com with any questions or concerns.`}</Typography></Box>)}</Card></Box></Container></Box>
 }
 export default function App() {
   const hashPath = window.location.hash.startsWith('#/') ? normalized(window.location.hash.slice(1).split('?')[0]) : '';
